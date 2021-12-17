@@ -1,6 +1,8 @@
 # react-sg-modules
 
-> Module to Module to facilitate redux sagas and redux configurations with async request with expo
+> Easy way to handle react-redux with redux-sagas and reduxsauce with asyn requests
+
+Handle your request with redux
 
 [![NPM](https://img.shields.io/npm/v/react-sg-modules.svg)](https://www.npmjs.com/package/react-sg-modules) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -10,20 +12,143 @@
 npm install --save react-sg-modules
 ```
 
-## Usage
+## Usage/Examples
 
-```jsx
-import React, { Component } from 'react'
 
-import MyComponent from 'react-sg-modules'
-import 'react-sg-modules/dist/index.css'
+```javascript
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
-}
+import { Provider } from '@sygnalgroup/react-sg-modules';
+
+<Provider>
+  <App />
+</Provider>
+
 ```
+
+
+## MODULES
+
+CREATE MODULE - TODO
+
+todo/index.js
+```javascript
+import api from 'core/api';
+
+export const todoModule = 'todo';
+
+const actions = {
+  getTodoList: {
+    module: todoModule,
+    name: 'getTodoList',
+    api: () => api.get('/todo'),
+    params: { // PARAMS TO EACH REDUCER ACTION
+      start: ['params'], // PARAMS REQUIRED.
+      error: ['error'],
+      success: ['data'],
+    },
+    *sagas(Creators, { params }) { // OPTIONAL METHOD - THE DEFAULT CALL (SUCCESS OR ERROR)
+      try {
+        const resp = yield call(actions.getChannels.api);
+        yield put(Creators.getChannelsSuccess(resp.data));
+      } catch (error) {
+        yield put(Creators.getChannelsError(getErrorMessage(error)));
+      }
+    },
+    state: { // STATES TO CHANGE IN EACH REDUCER ACTION
+      start: { loadingTodoList: true },
+      error: { loadingTodoList: false },
+      success: { loadingTodoList: false },
+    },
+  },
+};
+
+export default {
+  actions,
+  state: { // ALL STATES FROM THE MODULE
+    loadingTodoList: false,
+    data: [],
+  },
+};
+
+
+OR
+
+import api from 'core/api';
+
+export const todoModule = 'todo';
+
+const actions = {
+  getTodoList: {
+    module: todoModule,
+    name: 'getTodoList',
+    api: () => api.get('/channels'),
+    params: {
+      start: ['params'],
+      error: ['error'],
+      success: ['data'],
+    },
+  },
+};
+
+export default {
+  actions,
+  state: {
+    data: [],
+  },
+};
+
+```
+
+Create a file in src/modules/index.js and import the modules
+
+modules/index.js
+
+```javascript
+import todo from './todo/index';
+
+const Modules = {
+  todo,
+};
+
+export default Modules;
+
+```
+
+USAGE ACTIONS AND SELECTORS
+
+```
+import React, { useEffect } from 'react';
+import Modules from 'modules';
+import useActions from 'modules/map/useActions';
+import useSelectors from 'modules/map/useSelectors';
+import { todoModule } from 'modules/todo';
+
+const TodoList = () => {
+  const actions = useActions();
+  const { data } = useSelectors(todoModule);
+  const load = () => {
+    actions.request({
+      action: Modules.todo.actions.getTodoList,
+      data: {},
+      options: {
+        onSuccess: () => {},
+        onError: () => {},
+      },
+    });
+  };
+
+  useEffect(() => {
+    load();
+  }, []);
+
+  return <div>{data && data.map((item) => <div>{item.name}</div>)}</div>;
+};
+
+export default TodoList;
+
+
+```
+
 
 ## License
 

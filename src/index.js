@@ -3,7 +3,17 @@ import {
   history,
   useActions,
   useSelectors,
-  ReducersProvider
-} from './lib'
+  ReducersProvider,
+  api,
+  axios
+} from './core/index'
 
-export { Provider, history, useActions, useSelectors, ReducersProvider }
+export {
+  Provider,
+  history,
+  useActions,
+  useSelectors,
+  ReducersProvider,
+  api,
+  axios
+}
