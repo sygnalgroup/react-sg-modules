@@ -1,33 +1,48 @@
 {
-  "parser": "babel-eslint",
-  "extends": [
-    "standard",
-    "standard-react",
-    "plugin:prettier/recommended",
-    "prettier/standard",
-    "prettier/react"
-  ],
   "env": {
-    "node": true
+    "browser": true,
+    "es6": true,
+    "jest": true,
+    "cypress/globals": true
   },
+  "extends": ["react-app", "airbnb", "prettier", "prettier/react"],
+  "globals": {
+    "process": false,
+    "context": true
+  },
+  "parser": "babel-eslint",
   "parserOptions": {
-    "ecmaVersion": 2020,
     "ecmaFeatures": {
-      "legacyDecorators": true,
+      "experimentalObjectRestSpread": true,
       "jsx": true
-    }
+    },
+    "sourceType": "module"
+  },
+  "plugins": ["react", "react-hooks", "prettier", "cypress"],
+  "rules": {
+    "import/extensions": 0,
+    "import/no-cycle": 0,
+    "jsx-a11y/anchor-is-valid": ["error", { "specialLink": ["to"] }],
+    "no-console": 0,
+    "prettier/prettier": "error",
+    "react/prop-types": 0,
+    "react/destructuring-assignment": 0,
+    "react/no-unescaped-entities": 0,
+    "react/jsx-props-no-spreading": 0,
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "import/no-extraneous-dependencies": [
+      "error",
+      { "devDependencies": ["**/*.test.js", "**/test/**"] }
+    ]
   },
   "settings": {
-    "react": {
-      "version": "16"
+    "import/resolver": {
+      "webpack": {},
+      "node": {
+        "moduleDirectory": ["node_modules", "./src"]
+      }
     }
-  },
-  "rules": {
-    "space-before-function-paren": 0,
-    "react/prop-types": 0,
-    "react/jsx-handler-names": 0,
-    "react/jsx-fragments": 0,
-    "react/no-unused-prop-types": 0,
-    "import/export": 0
   }
 }
