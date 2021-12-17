@@ -1,6 +1,9 @@
-import React from 'react'
-import styles from './styles.module.css'
+import {
+  Provider,
+  history,
+  useActions,
+  useSelectors,
+  ReducersProvider
+} from './lib'
 
-export const ExampleComponent = ({ text }) => {
-  return <div className={styles.test}>Example Component: {text}</div>
-}
+export { Provider, history, useActions, useSelectors, ReducersProvider }
