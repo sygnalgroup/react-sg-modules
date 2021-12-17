@@ -1,7 +1,5 @@
 import { createSelector } from 'reselect'
-import AppModules from '../../modules'
-
-const Modules = AppModules.default
+import Modules from '../../modules'
 
 const selectors = {}
 

@@ -10,7 +10,8 @@ import {
   persistData,
   removeData,
   retrieveData,
-  clearAuthHeaders
+  clearAuthHeaders,
+  ReactReduxContext
 } from './core/index'
 
 import { setApiBaseUrl } from './core/utils/helpers'
@@ -28,5 +29,6 @@ export {
   removeData,
   retrieveData,
   clearAuthHeaders,
-  setApiBaseUrl
+  setApiBaseUrl,
+  ReactReduxContext
 }

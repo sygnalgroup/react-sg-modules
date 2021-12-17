@@ -1,7 +1,5 @@
 import { createActions } from 'reduxsauce'
-import AppModules from '../../modules'
-
-const Modules = AppModules.default
+import Modules from '../../modules'
 
 const actionsModules = {}
 const actions = {}

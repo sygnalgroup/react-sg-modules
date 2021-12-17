@@ -182,6 +182,17 @@ export default TodoList;
 }
 ```
 
+If you want add moddlewares in redux store you can add this method storeMiddlewares in your modules.js, this method must return a array
+
+the package will import this function from your project and add the middlewares in the store.
+
+EXAMPLE - routerMiddleware from connected-react-router
+```javascript
+
+export const storeMiddlewares = (history) => [routerMiddleware(history)];
+
+```
+
 ## License
 
 MIT © [sygnalgroupbr](https://github.com/sygnalgroupbr)

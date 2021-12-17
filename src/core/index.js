@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { ReactReduxContext } from 'react-redux'
 import Provider from './modules/Provider'
 import history from './store/history'
 import useActions from './modules/useActions'
@@ -20,5 +21,6 @@ export {
   persistData,
   removeData,
   retrieveData,
-  clearAuthHeaders
+  clearAuthHeaders,
+  ReactReduxContext
 }

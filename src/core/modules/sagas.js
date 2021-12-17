@@ -2,10 +2,8 @@ import { call, put, takeLatest } from 'redux-saga/effects'
 import { toSnackCase } from '../utils/helpers'
 import { getErrorMessage } from '../api/api-error'
 import actions from './actions'
+import Modules from '../../modules'
 
-import AppModules from '../../modules'
-
-const Modules = AppModules.default
 const sagas = []
 
 Object.keys(Modules).forEach((module) => {

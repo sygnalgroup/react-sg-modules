@@ -1,10 +1,8 @@
 import { createReducer } from 'reduxsauce'
 import Immutable from 'seamless-immutable'
-import AppModules from '../../modules'
+import Modules from '../../modules'
 import actions from './actions'
 import { toSnackCase } from '../utils/helpers'
-
-const Modules = AppModules.default
 
 const reducers = {}
 
