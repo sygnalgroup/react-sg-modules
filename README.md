@@ -1,8 +1,10 @@
 # react-sg-modules
 
-> Easy way to handle react-redux with redux-sagas and reduxsauce with asyn requests
+> Easy way to handle react-redux with redux-sagas and reduxsauce
 
-Handle your request with redux
+With this package you can execute async requests and change the store automatically
+
+This package require react-router and react-hooks
 
 [![NPM](https://img.shields.io/npm/v/react-sg-modules.svg)](https://www.npmjs.com/package/react-sg-modules) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -14,6 +16,17 @@ npm install --save react-sg-modules
 
 ## Usage/Examples
 
+If you will use async requests, can set the api base url from this method.
+
+```javascript
+
+import { setApiBaseUrl } from '@sygnalgroup/react-sg-modules';
+
+setApiBaseUrl(BASE_URL_API);
+
+```
+
+So, add the provider
 
 ```javascript
 
@@ -149,6 +162,25 @@ export default TodoList;
 
 ```
 
+
+## EXPORT MODULES
+```javascript
+{
+  Provider,
+  history,
+  useActions,
+  useSelectors,
+  ReducersProvider,
+  api,
+  axios,
+  retrieveAuthHeaders,
+  persistData,
+  removeData,
+  retrieveData,
+  clearAuthHeaders,
+  setApiBaseUrl
+}
+```
 
 ## License
 

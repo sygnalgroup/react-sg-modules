@@ -1,4 +1,4 @@
-import { removeData } from 'core/utils/session-storage'
+import { removeData } from '../utils/session-storage'
 import { clearAuthHeaders } from './auth-headers'
 
 export const buildError = (response) => {

@@ -5,8 +5,15 @@ import {
   useSelectors,
   ReducersProvider,
   api,
-  axios
+  axios,
+  retrieveAuthHeaders,
+  persistData,
+  removeData,
+  retrieveData,
+  clearAuthHeaders
 } from './core/index'
+
+import { setApiBaseUrl } from './core/utils/helpers'
 
 export {
   Provider,
@@ -15,5 +22,11 @@ export {
   useSelectors,
   ReducersProvider,
   api,
-  axios
+  axios,
+  retrieveAuthHeaders,
+  persistData,
+  removeData,
+  retrieveData,
+  clearAuthHeaders,
+  setApiBaseUrl
 }
