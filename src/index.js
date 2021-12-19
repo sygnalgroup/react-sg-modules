@@ -14,7 +14,7 @@ import {
   ReactReduxContext,
 } from './core/index';
 
-import { setApiBaseUrl, sgModule } from './core/utils/helpers';
+import { setApiBaseUrl } from './core/utils/helpers';
 
 export {
   Provider,
@@ -31,5 +31,4 @@ export {
   clearAuthHeaders,
   setApiBaseUrl,
   ReactReduxContext,
-  sgModule,
 };
