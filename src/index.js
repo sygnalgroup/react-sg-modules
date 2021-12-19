@@ -3,7 +3,32 @@ import {
   history,
   useActions,
   useSelectors,
-  ReducersProvider
-} from './lib'
+  ReducersProvider,
+  api,
+  axios,
+  retrieveAuthHeaders,
+  persistData,
+  removeData,
+  retrieveData,
+  clearAuthHeaders,
+  ReactReduxContext
+} from './core/index'
 
-export { Provider, history, useActions, useSelectors, ReducersProvider }
+import { setApiBaseUrl } from './core/utils/helpers'
+
+export {
+  Provider,
+  history,
+  useActions,
+  useSelectors,
+  ReducersProvider,
+  api,
+  axios,
+  retrieveAuthHeaders,
+  persistData,
+  removeData,
+  retrieveData,
+  clearAuthHeaders,
+  setApiBaseUrl,
+  ReactReduxContext
+}

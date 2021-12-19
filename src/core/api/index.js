@@ -1,17 +1,15 @@
 import axios from 'axios'
 import humps from 'humps'
 
-import { retrieveData } from 'core/utils/session-storage'
+import { retrieveData } from '../utils/session-storage'
 import { retrieveAuthHeaders } from './auth-headers'
 import evolveResponse from './interceptors/evolve-response'
 import persistHeaders from './interceptors/persist-headers'
 import parseResponse from './interceptors/parse-response'
 import parseError from './interceptors/parse-error'
 
-const BASE_URL_API = 'http://localhost:3000/api/v1'
-
 const api = axios.create({
-  baseURL: BASE_URL_API
+  baseURL: retrieveData('SG_MODULE_BASE_URL_API')
 })
 
 api.interceptors.request.use((request) => {
@@ -23,14 +21,19 @@ api.interceptors.request.use((request) => {
     data = humps.decamelizeKeys(request.data)
   }
 
+  const headersAuthRequest = {}
+  Object.keys(authHeaders).forEach((key) => {
+    if (authHeaders[key]) {
+      headersAuthRequest[key] = authHeaders[key]
+    }
+  })
   return {
     ...request,
     params: request.params ? humps.decamelizeKeys(request.params) : {},
     data,
     headers: {
       ...request.headers,
-      ...authHeaders,
-      'Access-Control-Allow-Credentials': true
+      ...headersAuthRequest
     }
   }
 })

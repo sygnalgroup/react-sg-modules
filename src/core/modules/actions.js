@@ -1,21 +1,19 @@
-import { createActions } from 'reduxsauce'
-import AppModules from '../../modules'
+import { createActions } from 'reduxsauce';
+import Modules from '../../modules';
 
-const Modules = AppModules.default
-
-const actionsModules = {}
-const actions = {}
+const actionsModules = {};
+const actions = {};
 
 Object.keys(Modules).forEach((module) => {
-  const actionsModule = Modules[module].actions
+  const actionsModule = Modules[module].actions;
   Object.keys(actionsModule).forEach((action) => {
-    actionsModules[`${action}Start`] = actionsModule[action].params.start
-    actionsModules[`${action}Error`] = actionsModule[action].params.error
-    actionsModules[`${action}Success`] = actionsModule[action].params.success
-  })
+    actionsModules[`${action}Start`] = actionsModule[action].action.start || ['params'];
+    actionsModules[`${action}Error`] = actionsModule[action].action.error;
+    actionsModules[`${action}Success`] = actionsModule[action].action.success;
+  });
   actions[module] = createActions(actionsModules, {
-    prefix: `${module.toUpperCase()}/`
-  })
-})
+    prefix: `${module.toUpperCase()}/`,
+  });
+});
 
-export default actions
+export default actions;
