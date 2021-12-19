@@ -21,14 +21,19 @@ api.interceptors.request.use((request) => {
     data = humps.decamelizeKeys(request.data)
   }
 
+  const headersAuthRequest = {}
+  Object.keys(authHeaders).forEach((key) => {
+    if (authHeaders[key]) {
+      headersAuthRequest[key] = authHeaders[key]
+    }
+  })
   return {
     ...request,
     params: request.params ? humps.decamelizeKeys(request.params) : {},
     data,
     headers: {
       ...request.headers,
-      ...authHeaders,
-      'Access-Control-Allow-Credentials': true
+      ...headersAuthRequest
     }
   }
 })

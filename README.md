@@ -6,7 +6,7 @@ With this package you can execute async requests and change the store automatica
 
 This package require react-router and react-hooks
 
-[![NPM](https://img.shields.io/npm/v/react-sg-modules.svg)](https://www.npmjs.com/package/react-sg-modules) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/react-sg-modules.svg)](https://www.npmjs.com/package/@sygnalgroup/react-sg-modules) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
@@ -54,7 +54,7 @@ const actions = {
     module: todoModule,
     name: 'getTodoList',
     api: () => api.get('/todo'),
-    params: { // PARAMS TO EACH REDUCER ACTION
+    action: { // PARAMS TO EACH REDUCER ACTION
       start: ['params'], // PARAMS REQUIRED.
       error: ['error'],
       success: ['data'],
@@ -95,7 +95,7 @@ const actions = {
     module: todoModule,
     name: 'getTodoList',
     api: () => api.get('/channels'),
-    params: {
+    action: {
       start: ['params'],
       error: ['error'],
       success: ['data'],
@@ -165,7 +165,7 @@ export default TodoList;
 
 ## EXPORT MODULES
 ```javascript
-{
+export {
   Provider,
   history,
   useActions,
@@ -178,7 +178,8 @@ export default TodoList;
   removeData,
   retrieveData,
   clearAuthHeaders,
-  setApiBaseUrl
+  setApiBaseUrl,
+  ReactReduxContext
 }
 ```
 

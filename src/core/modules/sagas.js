@@ -21,6 +21,8 @@ Object.keys(Modules).forEach((module) => {
         let resp = { data: null }
         if (moduleActions[action].api) {
           resp = yield call(moduleActions[action].api, data)
+        } else {
+          resp = params
         }
         yield put(Creators[`${action}Success`](resp.data))
 

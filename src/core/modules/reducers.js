@@ -31,8 +31,8 @@ Object.keys(Modules).forEach((module) => {
         })
       }
 
-      if (moduleActions[action].params?.success) {
-        moduleActions[action].params.success.forEach((param) => {
+      if (moduleActions[action].action?.success) {
+        moduleActions[action].action.success.forEach((param) => {
           newKeys[param] = params[param]
         })
       }
@@ -46,8 +46,8 @@ Object.keys(Modules).forEach((module) => {
           newKeys[param] = moduleActions[action].state.error[param]
         })
       }
-      if (moduleActions[action].params?.error) {
-        moduleActions[action].params.error.forEach((param) => {
+      if (moduleActions[action].action?.error) {
+        moduleActions[action].action.error.forEach((param) => {
           newKeys[param] = params[param]
         })
       }
