@@ -16,5 +16,5 @@ export const sgModule = (moduleName, module) => {
     newActions[key].name = key;
   });
   newModule.actions = newActions;
-  return module;
+  return newModule;
 };
