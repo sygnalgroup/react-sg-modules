@@ -11,10 +11,10 @@ import {
   removeData,
   retrieveData,
   clearAuthHeaders,
-  ReactReduxContext
-} from './core/index'
+  ReactReduxContext,
+} from './core/index';
 
-import { setApiBaseUrl } from './core/utils/helpers'
+import { setApiBaseUrl, sgModule } from './core/utils/helpers';
 
 export {
   Provider,
@@ -30,5 +30,6 @@ export {
   retrieveData,
   clearAuthHeaders,
   setApiBaseUrl,
-  ReactReduxContext
-}
+  ReactReduxContext,
+  sgModule,
+};
