@@ -52,8 +52,6 @@ export const todoModule = 'todo';
 
 const actions = {
   getTodoList: {
-    module: todoModule,
-    name: 'getTodoList',
     api: () => api.get('/todo'),
     action: { // PARAMS TO EACH REDUCER ACTION
       start: ['params'], // REQUIRE - CAN BE OMITTED
@@ -93,8 +91,6 @@ export const todoModule = 'todo';
 
 const actions = {
   getTodoList: {
-    module: todoModule,
-    name: 'getTodoList',
     api: () => api.get('/todo'),
     action: {
       error: ['error'],
@@ -137,10 +133,10 @@ import useSelectors from 'modules/map/useSelectors';
 import { todoModule } from 'modules/todo';
 
 const TodoList = () => {
-  const actions = useActions();
+  const { dispatch } = useActions();
   const { data } = useSelectors(todoModule);
   const load = () => {
-    actions.request({
+    dispatch({
       action: Modules.todo.actions.getTodoList,
       data: {},
       options: {
@@ -205,8 +201,6 @@ export const appModule = 'app';
 
 const actions = {
   setTitle: {
-    module: appModule,
-    name: 'setTitle',
     action: {
       success: ['title'],
     },
