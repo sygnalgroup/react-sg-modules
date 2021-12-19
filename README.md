@@ -17,7 +17,7 @@ npm install --save react-sg-modules
 
 ## Usage/Examples
 
-If you will use async requests, can set the api base url from this method.
+If you will use async requests, can set the api base url from in setApiBaseUrl method.
 
 ```javascript
 
@@ -235,4 +235,4 @@ useEffect(() => {
 
 ## License
 
-MIT © [sygnalgroupbr](https://github.com/sygnalgroupbr)
+MIT © [sygnalgroup](https://github.com/sygnalgroup)
