@@ -9,15 +9,26 @@ let storeMiddlewares = [];
 let connectRouter;
 
 try {
-  // modules = require(`${__dirname}/../../onboarding-react-web/src/modules/index.js`)
-  // eslint-disable-next-line global-require
-  modules = require(`${__dirname}/../../../../src/modules/index.js`);
+  // modules = require(`/../../test-app/src/modules/index.js`) // TEST APP
+
+  try {
+    if (__dirname) {
+      // eslint-disable-next-line global-require
+      modules = require(`${__dirname}/../../../../src/modules/index.js`);
+    } else {
+      // eslint-disable-next-line global-require
+      modules = require(`../../../../src/modules/index.js`);
+    }
+  } catch {
+    // eslint-disable-next-line global-require
+    modules = require(`../../../../src/modules/index.js`);
+  }
 
   storeMiddlewares = modules.storeMiddlewares || (() => []);
   connectRouter = modules.connectRouter || null;
 } catch (ex) {
   console.error(
-    'Modules not found, please create a file with your modules in {PROJECT_ROOT}/src/modules/index.js ',
+    'Error: Modules not found, please create a file with your modules in {PROJECT_ROOT}/src/modules/index.js ',
     ex,
   );
   modules = {};
@@ -25,7 +36,7 @@ try {
 
 export { storeMiddlewares, connectRouter };
 
-const appModules = modules.default;
+const appModules = modules.default || {};
 
 Object.keys(appModules).forEach((key) => {
   appModules[key] = sgModule(key, appModules[key]);

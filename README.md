@@ -13,6 +13,10 @@ With this package you can execute async requests and change the store automatica
 
 ```bash
 npm install --save react-sg-modules
+
+OR
+
+npm install --save react-native-sg-modules
 ```
 
 ## Usage/Examples
