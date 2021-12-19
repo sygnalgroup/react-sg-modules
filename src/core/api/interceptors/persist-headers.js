@@ -1,14 +1,14 @@
-import { persistAuthHeaders } from '../auth-headers'
-import { persistData } from '../../utils/session-storage'
+import { persistAuthHeaders } from '../auth-headers';
+import { persistData } from '../../utils/session-storage';
 
 const persistHeaders = (response) => {
   if (response.ok) {
     if (response.headers['access-token']) {
-      persistAuthHeaders(persistData)(response.headers)
+      persistAuthHeaders(persistData)(response.headers);
     }
   }
 
-  return response
-}
+  return response;
+};
 
-export default persistHeaders
+export default persistHeaders;

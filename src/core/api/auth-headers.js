@@ -1,7 +1,7 @@
 export function retrieveAuthHeaders(retrieveData) {
   return () => {
     if (!retrieveData) {
-      return null
+      return null;
     }
 
     return {
@@ -9,32 +9,32 @@ export function retrieveAuthHeaders(retrieveData) {
       'access-token': retrieveData('access-token'),
       'token-type': retrieveData('token-type'),
       expiry: retrieveData('expiry'),
-      client: retrieveData('client')
-    }
-  }
+      client: retrieveData('client'),
+    };
+  };
 }
 
 export function persistAuthHeaders(persistData) {
   return (headers) => {
     if (!persistData || !headers) {
-      return
+      return;
     }
-    persistData('uid', headers.uid)
-    persistData('access-token', headers['access-token'])
-    persistData('expiry', headers.expiry)
-    persistData('client', headers.client)
-  }
+    persistData('uid', headers.uid);
+    persistData('access-token', headers['access-token']);
+    persistData('expiry', headers.expiry);
+    persistData('client', headers.client);
+  };
 }
 
 export function clearAuthHeaders(removeData) {
   return () => {
     if (!removeData) {
-      return
+      return;
     }
 
-    removeData('uid')
-    removeData('access-token')
-    removeData('expiry')
-    removeData('client')
-  }
+    removeData('uid');
+    removeData('access-token');
+    removeData('expiry');
+    removeData('client');
+  };
 }

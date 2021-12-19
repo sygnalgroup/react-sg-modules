@@ -1,3 +1,4 @@
+import { call, put, takeLatest, all } from 'redux-saga/effects';
 import {
   Provider,
   history,
@@ -31,4 +32,8 @@ export {
   clearAuthHeaders,
   setApiBaseUrl,
   ReactReduxContext,
+  call,
+  put,
+  takeLatest,
+  all,
 };
