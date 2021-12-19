@@ -1,9 +1,9 @@
-import React from 'react'
-import { Provider } from 'react-redux'
-import { ReducersProvider } from '../contexts'
-import store from '../store/store'
-import actions from './actions'
-import selectors from './selectors'
+import React from 'react';
+import { Provider } from 'react-redux';
+import { ReducersProvider } from '../contexts';
+import store from '../store/store';
+import actions from './actions';
+import selectors from './selectors';
 
 export default ({ children }) => {
   return (
@@ -12,5 +12,5 @@ export default ({ children }) => {
         {children}
       </ReducersProvider.Provider>
     </Provider>
-  )
-}
+  );
+};

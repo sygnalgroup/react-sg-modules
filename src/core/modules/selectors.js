@@ -1,14 +1,14 @@
-import { createSelector } from 'reselect'
-import Modules from '../../modules'
+import { createSelector } from 'reselect';
+import Modules from '../../modules';
 
-const selectors = {}
+const selectors = {};
 
 Object.keys(Modules).forEach((module) => {
   const getState = (state) => {
-    return state[module]
-  }
+    return state[module];
+  };
 
-  selectors[module] = { state: createSelector(getState, (state) => state) }
-})
+  selectors[module] = { state: createSelector(getState, (state) => state) };
+});
 
-export default selectors
+export default selectors;

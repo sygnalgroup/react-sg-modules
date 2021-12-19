@@ -4,9 +4,10 @@
 
 With this package you can execute async requests and change the store automatically
 
-This package require react-router and react-hooks
+[![NPM](https://img.shields.io/badge/react--sg--modules-sygnalgroup-green)](https://www.npmjs.com/package/@sygnalgroup/react-sg-modules) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-[![NPM](https://img.shields.io/npm/v/react-sg-modules.svg)](https://www.npmjs.com/package/@sygnalgroup/react-sg-modules) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+## Example crud using the package
+[Crud with react-sg-modules](https://github.com/sygnalgroup/example-use-sg-modules)
 
 ## Install
 
@@ -55,16 +56,16 @@ const actions = {
     name: 'getTodoList',
     api: () => api.get('/todo'),
     action: { // PARAMS TO EACH REDUCER ACTION
-      start: ['params'], // PARAMS REQUIRED.
+      start: ['params'], // REQUIRE - CAN BE OMITTED
       error: ['error'],
       success: ['data'],
     },
     *sagas(Creators, { params }) { // OPTIONAL METHOD - THE DEFAULT CALL (SUCCESS OR ERROR)
       try {
         const resp = yield call(actions.getChannels.api);
-        yield put(Creators.getChannelsSuccess(resp.data));
+        yield put(Creators.getTodoListSuccess(resp.data));
       } catch (error) {
-        yield put(Creators.getChannelsError(getErrorMessage(error)));
+        yield put(Creators.getTodoListError(getErrorMessage(error)));
       }
     },
     state: { // STATES TO CHANGE IN EACH REDUCER ACTION
@@ -94,9 +95,8 @@ const actions = {
   getTodoList: {
     module: todoModule,
     name: 'getTodoList',
-    api: () => api.get('/channels'),
+    api: () => api.get('/todo'),
     action: {
-      start: ['params'],
       error: ['error'],
       success: ['data'],
     },
@@ -191,6 +191,51 @@ EXAMPLE - routerMiddleware from connected-react-router
 ```javascript
 
 export const storeMiddlewares = (history) => [routerMiddleware(history)];
+
+```
+
+
+## USE MODULE WITHOUT REQUESTS - REDUX STORE MODULE
+
+EXAMPLE app.js module
+
+```javascript
+
+export const appModule = 'app';
+
+const actions = {
+  setTitle: {
+    module: appModule,
+    name: 'setTitle',
+    action: {
+      success: ['title'],
+    },
+  },
+};
+
+const app = {
+  actions,
+  state: {
+    title: 'My App',
+  },
+}
+
+export default app;
+
+```
+
+USAGE
+
+```javascript
+const { dispatch } = useActions();
+const { title } = useSelectors(appModule);
+
+useEffect(() => {
+  dispatch({
+    action: Modules.app.actions.setTitle,
+    data: 'Posts Title'
+  })
+}, [dispatch]);
 
 ```
 
