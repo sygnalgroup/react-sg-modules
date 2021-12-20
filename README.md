@@ -12,11 +12,11 @@ With this package you can execute async requests and change the store automatica
 ## Install
 
 ```bash
-npm install --save react-sg-modules
+npm install --save @sygnalgroup/react-native-sg-modules
 
 OR
 
-npm install --save react-native-sg-modules
+npm i --save @sygnalgroup/react-native-sg-modules
 ```
 
 ## Usage/Examples
