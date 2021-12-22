@@ -31,7 +31,7 @@ setApiBaseUrl(BASE_URL_API);
 
 ```
 
-Customize the auth api keys
+Customize the api auth keys - this keys the lib auto persist in the headers and always update.
 
 DEFAULT - ['uid', 'access-token', 'expiry', 'client'];
 
