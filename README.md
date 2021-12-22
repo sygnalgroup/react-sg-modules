@@ -45,8 +45,7 @@ export { authHeaders };
 
 ```
 
-
-So, add the provider
+## Provider
 
 ```javascript
 
