@@ -16,7 +16,7 @@ export function retrieveAuthHeaders(retrieveData) {
       headers[key] = retrieveData(key);
     });
 
-    return headersKeys;
+    return headers;
   };
 }
 
