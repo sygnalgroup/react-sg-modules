@@ -1,5 +1,5 @@
-import { buildError } from '../api-error'
+import { buildError } from '../api-error';
 
-const parseError = (error) => Promise.reject(buildError(error.response))
+const parseError = (error) => Promise.reject(buildError(error.response));
 
-export default parseError
+export default parseError;

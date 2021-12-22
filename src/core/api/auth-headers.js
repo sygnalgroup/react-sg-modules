@@ -1,16 +1,22 @@
+import { authHeaders } from '../../modules';
+
+export const getAuthHeaders = () => {
+  return authHeaders || ['uid', 'access-token', 'expiry', 'client'];
+};
+
 export function retrieveAuthHeaders(retrieveData) {
   return () => {
     if (!retrieveData) {
       return null;
     }
 
-    return {
-      uid: retrieveData('uid'),
-      'access-token': retrieveData('access-token'),
-      'token-type': retrieveData('token-type'),
-      expiry: retrieveData('expiry'),
-      client: retrieveData('client'),
-    };
+    const headers = {};
+    const headersKeys = getAuthHeaders();
+    headersKeys.forEach((key) => {
+      headers[key] = retrieveData(key);
+    });
+
+    return headersKeys;
   };
 }
 
@@ -19,10 +25,11 @@ export function persistAuthHeaders(persistData) {
     if (!persistData || !headers) {
       return;
     }
-    persistData('uid', headers.uid);
-    persistData('access-token', headers['access-token']);
-    persistData('expiry', headers.expiry);
-    persistData('client', headers.client);
+
+    const headersKeys = getAuthHeaders();
+    headersKeys.forEach((key) => {
+      persistData(key, headers[key]);
+    });
   };
 }
 
@@ -32,9 +39,9 @@ export function clearAuthHeaders(removeData) {
       return;
     }
 
-    removeData('uid');
-    removeData('access-token');
-    removeData('expiry');
-    removeData('client');
+    const headersKeys = getAuthHeaders();
+    headersKeys.forEach((key) => {
+      removeData(key);
+    });
   };
 }
