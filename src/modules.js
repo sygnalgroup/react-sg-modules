@@ -7,6 +7,7 @@ let modules;
 
 let storeMiddlewares = [];
 let connectRouter;
+let authHeaders;
 
 try {
   // modules = require(`/../../test-app/src/modules/index.js`) // TEST APP
@@ -26,6 +27,7 @@ try {
 
   storeMiddlewares = modules.storeMiddlewares || (() => []);
   connectRouter = modules.connectRouter || null;
+  authHeaders = modules.authHeaders || null;
 } catch (ex) {
   console.error(
     'Error: Modules not found, please create a file with your modules in {PROJECT_ROOT}/src/modules/index.js ',
@@ -34,7 +36,7 @@ try {
   modules = {};
 }
 
-export { storeMiddlewares, connectRouter };
+export { storeMiddlewares, connectRouter, authHeaders };
 
 const appModules = modules.default || {};
 

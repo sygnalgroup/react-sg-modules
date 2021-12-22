@@ -31,6 +31,21 @@ setApiBaseUrl(BASE_URL_API);
 
 ```
 
+Customize the auth api keys
+
+DEFAULT - ['uid', 'access-token', 'expiry', 'client'];
+
+If you want costumize the headers keys, you need export authHeaders from modules/index.js in your project
+
+```javascript
+
+const authHeaders = ['uid', 'access-token', 'expiry', 'client'];
+
+export { authHeaders };
+
+```
+
+
 So, add the provider
 
 ```javascript
