@@ -42,6 +42,15 @@ export { authHeaders };
 
 ```
 
+The lib use localStorage to save the keys and use in the request headers, if you want set manually the keys, use the method to persist in local storage
+
+```javascript
+
+import { persistData, removeData, retrieveData } from '@sygnalgroup/react-sg-modules';
+
+```
+
+
 
 ## Provider
 
