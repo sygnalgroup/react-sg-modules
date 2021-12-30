@@ -1,8 +1,5 @@
-/* eslint-disable import/no-mutable-exports */
-
 import { sgModule } from './core/utils/helpers';
 
-/* eslint-disable import/no-dynamic-require */
 let modules;
 
 let storeMiddlewares = [];
@@ -10,18 +7,13 @@ let connectRouter;
 let authHeaders;
 
 try {
-  // modules = require(`/../../test-app/src/modules/index.js`) // TEST APP
-
   try {
     if (__dirname) {
-      // eslint-disable-next-line global-require
       modules = require(`${__dirname}/../../../../src/modules/index.js`);
     } else {
-      // eslint-disable-next-line global-require
       modules = require(`../../../../src/modules/index.js`);
     }
   } catch {
-    // eslint-disable-next-line global-require
     modules = require(`../../../../src/modules/index.js`);
   }
 
