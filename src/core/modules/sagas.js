@@ -40,10 +40,10 @@ Object.keys(Modules).forEach((module) => {
     }
 
     const actionName = toSnackCase(action);
-    if (!isTake) {
-      sagas.push(takeLatest(Types[`${actionName.toUpperCase()}_START`], sagasFunction));
-    } else {
+    if (isTake) {
       sagas.push(take(Types[`${actionName.toUpperCase()}_START`], sagasFunction));
+    } else {
+      sagas.push(takeLatest(Types[`${actionName.toUpperCase()}_START`], sagasFunction));
     }
   });
 });
