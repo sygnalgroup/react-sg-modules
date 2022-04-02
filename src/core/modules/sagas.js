@@ -11,7 +11,7 @@ Object.keys(Modules).forEach((module) => {
   const { Types, Creators } = actions[module];
 
   Object.keys(moduleActions).forEach((action) => {
-    const isTake = !!moduleActions[action]?.isTake;
+    const isTakeEvery = !!moduleActions[action]?.isTakeEvery;
 
     function* sagasFunction({ params = {} }) {
       const { data, options } = params;
@@ -40,7 +40,7 @@ Object.keys(Modules).forEach((module) => {
     }
 
     const actionName = toSnackCase(action);
-    if (isTake) {
+    if (isTakeEvery) {
       sagas.push(takeEvery(Types[`${actionName.toUpperCase()}_START`], sagasFunction));
     } else {
       sagas.push(takeLatest(Types[`${actionName.toUpperCase()}_START`], sagasFunction));
