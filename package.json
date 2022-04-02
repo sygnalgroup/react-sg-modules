@@ -1,6 +1,6 @@
 {
   "name": "@sygnalgroup/react-sg-modules",
-  "version": "1.4.5",
+  "version": "1.4.6",
   "description": "Module to facilitate redux sagas and redux configurations with async request with expo",
   "author": "sygnalgroup",
   "license": "MIT",
@@ -62,7 +62,7 @@
   },
   "homepage": "https://github.com/sygnalgroup/react-sg-modules#readme",
   "directories": {
-    "example": "example"
+    "": ""
   },
   "dependencies": {
     "axios": "^0.19.0",
