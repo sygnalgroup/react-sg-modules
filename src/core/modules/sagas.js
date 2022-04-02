@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest, take } from 'redux-saga/effects';
 import { toSnackCase } from '../utils/helpers';
 import { getErrorMessage } from '../api/api-error';
 import actions from './actions';
@@ -11,6 +11,8 @@ Object.keys(Modules).forEach((module) => {
   const { Types, Creators } = actions[module];
 
   Object.keys(moduleActions).forEach((action) => {
+    const isTake = !!moduleActions[action]?.isTake;
+
     function* sagasFunction({ params = {} }) {
       const { data, options } = params;
       if (moduleActions[action].sagas) {
@@ -38,7 +40,11 @@ Object.keys(Modules).forEach((module) => {
     }
 
     const actionName = toSnackCase(action);
-    sagas.push(takeLatest(Types[`${actionName.toUpperCase()}_START`], sagasFunction));
+    if (!isTake) {
+      sagas.push(takeLatest(Types[`${actionName.toUpperCase()}_START`], sagasFunction));
+    } else {
+      sagas.push(take(Types[`${actionName.toUpperCase()}_START`], sagasFunction));
+    }
   });
 });
 
