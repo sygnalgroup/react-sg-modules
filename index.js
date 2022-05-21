@@ -282,7 +282,7 @@ Object.keys(Modules).forEach(function (module) {
 
     var _marked = /*#__PURE__*/regeneratorRuntime.mark(sagasFunction);
 
-    var isTake = !!((_moduleActions$action = moduleActions[action]) !== null && _moduleActions$action !== void 0 && _moduleActions$action.isTake);
+    var isTakeEvery = !!((_moduleActions$action = moduleActions[action]) !== null && _moduleActions$action !== void 0 && _moduleActions$action.isTakeEvery);
 
     function sagasFunction(_ref) {
       var _ref$params, params, data, options, resp;
@@ -363,10 +363,10 @@ Object.keys(Modules).forEach(function (module) {
 
     var actionName = toSnackCase(action);
 
-    if (!isTake) {
-      sagas.push(effects.takeLatest(Types[actionName.toUpperCase() + "_START"], sagasFunction));
+    if (isTakeEvery) {
+      sagas.push(effects.takeEvery(Types[actionName.toUpperCase() + "_START"], sagasFunction));
     } else {
-      sagas.push(effects.take(Types[actionName.toUpperCase() + "_START"], sagasFunction));
+      sagas.push(effects.takeLatest(Types[actionName.toUpperCase() + "_START"], sagasFunction));
     }
   });
 });
@@ -569,7 +569,14 @@ Object.defineProperty(exports, 'takeLatest', {
   }
 });
 exports.axios = axios;
+Object.defineProperty(exports, 'ReactReduxContext', {
+  enumerable: true,
+  get: function () {
+    return reactRedux.ReactReduxContext;
+  }
+});
 exports.Provider = Provider;
+exports.ReducersProvider = ReducersProvider;
 exports.api = api;
 exports.clearAuthHeaders = clearAuthHeaders;
 exports.history = history;

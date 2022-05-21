@@ -1,8 +1,9 @@
-import { takeLatest, take, put, call, all } from 'redux-saga/effects';
+import { takeEvery, takeLatest, put, call, all } from 'redux-saga/effects';
 export { all, call, put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 export { default as axios } from 'axios';
 import { Provider as Provider$1, useDispatch, useSelector } from 'react-redux';
+export { ReactReduxContext } from 'react-redux';
 import React, { createContext, useContext, useCallback } from 'react';
 import createSagaMiddleware, { END } from 'redux-saga';
 import { combineReducers, compose, createStore, applyMiddleware } from 'redux';
@@ -280,7 +281,7 @@ Object.keys(Modules).forEach(function (module) {
 
     var _marked = /*#__PURE__*/regeneratorRuntime.mark(sagasFunction);
 
-    var isTake = !!((_moduleActions$action = moduleActions[action]) !== null && _moduleActions$action !== void 0 && _moduleActions$action.isTake);
+    var isTakeEvery = !!((_moduleActions$action = moduleActions[action]) !== null && _moduleActions$action !== void 0 && _moduleActions$action.isTakeEvery);
 
     function sagasFunction(_ref) {
       var _ref$params, params, data, options, resp;
@@ -361,10 +362,10 @@ Object.keys(Modules).forEach(function (module) {
 
     var actionName = toSnackCase(action);
 
-    if (!isTake) {
-      sagas.push(takeLatest(Types[actionName.toUpperCase() + "_START"], sagasFunction));
+    if (isTakeEvery) {
+      sagas.push(takeEvery(Types[actionName.toUpperCase() + "_START"], sagasFunction));
     } else {
-      sagas.push(take(Types[actionName.toUpperCase() + "_START"], sagasFunction));
+      sagas.push(takeLatest(Types[actionName.toUpperCase() + "_START"], sagasFunction));
     }
   });
 });
@@ -542,5 +543,5 @@ api.interceptors.response.use(evolveResponse);
 api.interceptors.response.use(persistHeaders);
 api.interceptors.response.use(parseResponse, parseError);
 
-export { Provider, api, clearAuthHeaders, history, persistData, removeData, retrieveAuthHeaders, retrieveData, setApiBaseUrl, useActions, useSelectors };
+export { Provider, ReducersProvider, api, clearAuthHeaders, history, persistData, removeData, retrieveAuthHeaders, retrieveData, setApiBaseUrl, useActions, useSelectors };
 //# sourceMappingURL=index.modern.js.map
