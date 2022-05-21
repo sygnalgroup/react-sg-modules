@@ -11,6 +11,8 @@ import {
   removeData,
   retrieveData,
   clearAuthHeaders,
+  ReactReduxContext,
+  ReducersProvider,
 } from './core/index';
 
 import { setApiBaseUrl } from './core/utils/helpers';
@@ -33,4 +35,6 @@ export {
   put,
   takeLatest,
   all,
+  ReactReduxContext,
+  ReducersProvider,
 };

@@ -1,6 +1,6 @@
 {
   "name": "@sygnalgroup/react-sg-modules",
-  "version": "1.4.5",
+  "version": "1.4.9",
   "description": "Module to facilitate redux sagas and redux configurations with async request with expo",
   "author": "sygnalgroup",
   "license": "MIT",
@@ -24,7 +24,8 @@
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
     "predeploy": "npm install && npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "public": "npm run publish"
   },
   "peerDependencies": {
     "react": "^16.0.0",
@@ -62,7 +63,7 @@
   },
   "homepage": "https://github.com/sygnalgroup/react-sg-modules#readme",
   "directories": {
-    "example": "example"
+    "": ""
   },
   "dependencies": {
     "axios": "^0.19.0",
