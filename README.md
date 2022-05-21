@@ -95,6 +95,7 @@ const actions = {
       error: { loadingTodoList: false },
       success: { loadingTodoList: false },
     },
+    isTakeEvery: true, // IF YOU WANT ALWAYS EXECUTE THE REQUEST, OTHER WISE WILL CANCEL DUPLICATED REQUESTS, DEFAULT=FALSE
   },
 };
 
