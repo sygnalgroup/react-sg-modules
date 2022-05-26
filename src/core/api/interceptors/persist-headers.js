@@ -1,11 +1,16 @@
-import { persistAuthHeaders } from '../auth-headers';
+/* eslint-disable consistent-return */
+import { getAuthHeaders, persistAuthHeaders } from '../auth-headers';
 import { persistData } from '../../utils/session-storage';
 
 const persistHeaders = (response) => {
   if (response.ok) {
-    if (response.headers['access-token']) {
-      persistAuthHeaders(persistData)(response.headers);
-    }
+    const headersKeys = getAuthHeaders();
+    headersKeys.forEach((key) => {
+      if (response.headers[key]) {
+        persistAuthHeaders(persistData)(response.headers);
+        return response;
+      }
+    });
   }
 
   return response;
