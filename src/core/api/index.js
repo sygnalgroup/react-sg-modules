@@ -8,9 +8,7 @@ import persistHeaders from './interceptors/persist-headers';
 import parseResponse from './interceptors/parse-response';
 import parseError from './interceptors/parse-error';
 
-const api = axios.create({
-  baseURL: retrieveData('SG_MODULE_BASE_URL_API'),
-});
+const api = axios.create();
 
 api.interceptors.request.use((request) => {
   // Retrieve persisted headers and set in the new API instance
@@ -29,6 +27,7 @@ api.interceptors.request.use((request) => {
   });
   return {
     ...request,
+    baseURL: retrieveData('SG_MODULE_BASE_URL_API'),
     params: request.params ? humps.decamelizeKeys(request.params) : {},
     data,
     headers: {
