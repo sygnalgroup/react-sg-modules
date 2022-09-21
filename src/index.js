@@ -13,6 +13,7 @@ import {
   clearAuthHeaders,
   ReactReduxContext,
   ReducersProvider,
+  persistAuthHeaders,
 } from './core/index';
 
 import { setApiBaseUrl } from './core/utils/helpers';
@@ -26,6 +27,7 @@ export {
   axios, // axios instance
   retrieveAuthHeaders, // retrieve all auth headers
   persistData, // persist data localstorage
+  persistAuthHeaders,
   removeData, // remove data localstorage
   retrieveData, // retrieve data localstorage
   clearAuthHeaders, // clear all auth from the headers
